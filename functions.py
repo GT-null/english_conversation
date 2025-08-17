@@ -143,7 +143,7 @@ def play_wav(audio_output_file_path, speed=1.0):
     # LLMからの回答の音声ファイルを削除
     os.remove(audio_output_file_path)
 
-def create_chain(system_template)
+def create_chain(system_template):
     """
     LLMによる回答生成用のChain作成
     """
