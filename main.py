@@ -165,11 +165,11 @@ if st.session_state.start_flg:
             st.session_state.messages.append({"role": "user", "content": st.session_state.dictation_chat_message})
             
             with st.spinner('評価結果の生成中...'):
-                system_template = ct.SYSTEM_TEMPLATE_EVALUATION.format(
-                    llm_text=st.session_state.problem,
+                system_template = ct.SYSTEM_TEMPLATE_EVALUATION.format(     #GT formatメソッドは、テンプレート文字列に動的な値を埋め込むために使用される
+                    llm_text=st.session_state.problem,                      #GT system_template変数にセッション状態(st.session_stateからproblemとdictation_chat_message)を埋め込む
                     user_text=st.session_state.dictation_chat_message
                 )
-                st.session_state.chain_evaluation = ft.create_chain(system_template)
+                st.session_state.chain_evaluation = ft.create_chain(system_template)    #GT: system_templateを基に評価チェーンを作成し、セッション状態に保存。
                 # 問題文と回答を比較し、評価結果の生成を指示するプロンプトを作成
                 llm_response_evaluation = ft.create_evaluation()
             

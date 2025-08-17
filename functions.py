@@ -185,7 +185,7 @@ def create_problem_and_play_audio():
     save_to_wav(llm_response_audio.content, audio_output_file_path) #GT: LLMからの回答の音声データをwav形式で保存する処理
 
     # 音声ファイルの読み上げ
-    play_wav(audio_output_file_path, st.session_state.speed)
+    play_wav(audio_output_file_path, st.session_state.speed)    #GT: PyAudioで音声ファイルを再生する
 
     return problem, llm_response_audio
 
@@ -194,6 +194,6 @@ def create_evaluation():
     ユーザー入力値の評価生成
     """
 
-    llm_response_evaluation = st.session_state.chain_evaluation.predict(input="")
-
+    llm_response_evaluation = st.session_state.chain_evaluation.predict(input="")       #GT: predictメソッドを実行し、評価結果を生成
+                                                                                        #GT: ConversationChain.predict() は「ユーザーの発話を入力し、LLMの返答を返す」メソッド
     return llm_response_evaluation
