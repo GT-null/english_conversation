@@ -163,7 +163,7 @@ def create_chain(system_template):
 
 def create_problem_and_play_audio():
     """
-    問題生成と音声ファイルの再生
+    問題生成と音声ファイルの再生（レベル別対応）
     Args:
         chain: 問題文生成用のChain
         speed: 再生速度（1.0が通常速度、0.5で半分の速さ、2.0で倍速など）
