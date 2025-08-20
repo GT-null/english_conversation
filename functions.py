@@ -40,16 +40,32 @@ def record_audio(audio_input_file_path):
 
 def transcribe_audio(audio_input_file_path):
     """
-    音声入力ファイルから文字起こしテキストを取得
+    音声入力ファイルから文字起こしテキストを取得（精度向上版）
     Args:
         audio_input_file_path: 音声入力ファイルのパス
     """
+    
+    # モード別のコンテキストプロンプトを設定
+    context_prompts = {
+        "conversation": "This is an English conversation practice session. The user is practicing casual English conversation.",
+        "shadowing": "This is a shadowing exercise where the user repeats English sentences.",
+        "dictation": "This is a dictation exercise where the user listens and transcribes English sentences."
+    }
+    
+    # 現在のモードを判定
+    current_mode = "conversation"  # デフォルト
+    if hasattr(st.session_state, 'shadowing_flg') and st.session_state.shadowing_flg:
+        current_mode = "shadowing"
+    elif hasattr(st.session_state, 'dictation_flg') and st.session_state.dictation_flg:
+        current_mode = "dictation"
 
     with open(audio_input_file_path, 'rb') as audio_input_file:
         transcript = st.session_state.openai_obj.audio.transcriptions.create(
             model="whisper-1",
             file=audio_input_file,
-            language="en"
+            language="en",
+            prompt=context_prompts[current_mode],  # コンテキスト追加
+            temperature=0.2  # 精度向上のため低温度設定
         )
     
     # 音声入力ファイルを削除
