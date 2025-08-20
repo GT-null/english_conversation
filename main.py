@@ -131,7 +131,7 @@ st.session_state.dictation_chat_message = st.chat_input("※「ディクテー�
 if st.session_state.dictation_chat_message and not st.session_state.chat_open_flg:
     st.stop()
 
-# 「英会話開始」ボタンが押された場合の処理
+#GT 「英会話開始」ボタンが押された場合の処理
 if st.session_state.start_flg:
 
     # モード：「ディクテーション」

@@ -9,7 +9,7 @@ AUDIO_OUTPUT_DIR = "audio/output"
 PLAY_SPEED_OPTION = [2.0, 1.5, 1.2, 1.0, 0.8, 0.6]
 ENGLISH_LEVEL_OPTION = ["初級者", "中級者", "上級者"]
 
-# 英語講師として自由な会話をさせ、文法間違いをさりげなく訂正させるプロンプト（レベル対応強化版）
+#GT 英語講師として自由な会話をさせ、文法間違いをさりげなく訂正させるプロンプト（レベル対応強化版）
 SYSTEM_TEMPLATE_BASIC_CONVERSATION = """
 You are an expert English conversation tutor with these guidelines:
 
@@ -41,7 +41,7 @@ You are an expert English conversation tutor with these guidelines:
 Remember: The goal is to build confidence through natural conversation while gently improving accuracy.
 """
 
-# レベル別問題生成プロンプト（シャドーイング・ディクテーション用）
+#GT レベル別問題生成プロンプト（シャドーイング・ディクテーション用）
 SYSTEM_TEMPLATE_CREATE_PROBLEM_BEGINNER = """
 Generate 1 practice sentence for BEGINNER level (JLPT N5-N4 / CEFR A1-A2):
 
